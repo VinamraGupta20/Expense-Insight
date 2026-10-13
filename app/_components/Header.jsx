@@ -24,25 +24,26 @@ function Header() {
         </span>
       </Link>
 
-      <div className="flex gap-3 items-center">
-        {isLoaded && (
-          <>
-            <Link href="/dashboard">
-              <Button variant="outline" className="rounded-full">
-                Dashboard
+      {isLoaded && (
+        <div className="flex gap-3 items-center">
+          {isSignedIn ? (
+            <>
+              <Link href="/dashboard">
+                <Button variant="outline" className="rounded-full">
+                  Dashboard
+                </Button>
+              </Link>
+              <UserButton />
+            </>
+          ) : (
+            <Link href="/sign-in">
+              <Button className="rounded-full">
+                Get Started
               </Button>
             </Link>
-
-            {isSignedIn ? (
-              <UserButton />
-            ) : (
-              <Link href="/sign-in">
-                <Button className="rounded-full">Get Started</Button>
-              </Link>
-            )}
-          </>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
